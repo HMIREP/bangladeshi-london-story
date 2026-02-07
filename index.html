@@ -1,12 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Here to Stay</title>
-<meta name="viewport" content="width=device-width">
-<style>
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;max-width:800px;margin:0 auto;padding:20px;line-height:1.6}
-img{max-width:100%;height:auto;border-radius:8px}
-h1{font-size:2.2em;margin-bottom:10px}
-h2{font-size:1.5em}
-nav{background:#f8f9fa;border-bottom:1px solid #eee;padding:15px;text-align:center}
-nav a{margin:0 15px;color
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bangladeshi London Story</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        nav { background: #1a1a1a; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
+        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; }
+        nav li { margin: 0 1rem; }
+        nav a { color: white; text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; display: block; }
+        .hero { background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), #007bff; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 80px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .stops { padding-top: 100px; }
+        .stop { background: #007bff; color: white; margin: 20px 0; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        .stop h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        footer { background: #1a1a1a; color: white; text-align: center; padding: 2rem; margin-top: 4rem; }
+        @media (max-width: 768px) { nav ul { flex-direction: column; align-items: center; } .hero h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#stops">Stops</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section id="home" class="hero">
+        <h1>Here to Stay</h1>
+        <p>Bangladeshi London Story</p>
+    </section>
+    
+    <div class="container">
+        <section id="stops" class="stops">
+            <div class="stop">
+                <h3>Stop 1: Brick Lane</h3>
+                <p>Curry houses, street art, Bangladeshi heart of London.</p>
+            </div>
+            <div class="stop">
+                <h3>Stop 2: Whitechapel Market</h3>
+                <p>Fresh produce, sari shops, daily Bangladeshi life.</p>
+            </div>
+            <!-- Add your 6 more stops here -->
+            <div class="stop"><h3>Stop 3</h3><p>...</p></div>
+            <div class="stop"><h3>Stop 4</h3><p>...</p></div>
+            <div class="stop"><h3>Stop 5</h3><p>...</p></div>
+            <div class="stop"><h3>Stop 6</h3><p>...</p></div>
+            <div class="stop"><h3>Stop 7</h3><p>...</p></div>
+            <div class="stop"><h3>Stop 8</h3><p>...</p></div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 Bangladeshi London Story. Made with ❤️</p>
+    </footer>
+</body>
+</html>
