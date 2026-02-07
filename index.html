@@ -4,143 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bangladeshi London Story</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-        nav { background: #1a1a1a; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
-        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; }
-        nav li { margin: 0 1rem; }
-        nav a { color: white; text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; display: block; }
-        nav a:hover { background: #007bff; }
-
-        /* stop card link styling */
-        .stop h3 a {
-            color: inherit;
-            text-decoration: none;
+        /* Add visual indicators for stops */
+        .stop-card {
+            position: relative;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px 0;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .stop-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('assets/hero.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        /* Subtitles under hero title */
+        .hero-title {
             text-align: center;
-            color: white;
-            padding-top: 80px;
+            margin-bottom: 20px;
         }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .stops { padding-top: 100px; }
-        .stop { background: #007bff; color: white; margin: 20px 0; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-        .stop h3 { font-size: 1.5rem; margin-bottom: 1rem; border-bottom: 2px solid red; padding-bottom: 0.5rem; }
-        .section { padding: 100px 20px; }
-        footer { background: #1a1a1a; color: white; text-align: center; padding: 2rem; margin-top: 4rem; }
-        @media (max-width: 768px) { 
-            nav ul { flex-direction: column; align-items: center; } 
-            .hero h1 { font-size: 2rem; } 
-            .hero { height: 80vh; }
+        .subtitle {
+            font-size: 1.5em;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        /* Improve mobile navigation */
+        @media (max-width: 600px) {
+            nav {
+                display: flex;
+                flex-direction: column;
+            }
+            .nav-link {
+                padding: 10px;
+            }
+        }
+
+        /* Visual spacing between sections */
+        section {
+            margin: 40px 0;
+        }
+
+        /* Make stop links more obvious with hover underline */
+        .stop-link {
+            text-decoration: none;
+            color: #007BFF;
+            transition: text-decoration 0.2s ease;
+        }
+        .stop-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Add border-top to footer */
+        footer {
+            border-top: 2px solid #ddd;
+            padding-top: 20px;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1 class="hero-title">The Bangladeshi London Story</h1>
+        <div class="subtitle">A Journey Through Culture and Community</div>
+    </header>
     <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#stops">8 Stops</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <a href="#" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Stories</a>
+        <a href="#" class="nav-link">Events</a>
+        <a href="#" class="nav-link">Contact</a>
     </nav>
-    
-    <section id="home" class="hero">
-        <h1>Here to Stay</h1>
-        <p>Bangladeshi London Story</p>
-    </section>
-    
-    <div class="container">
-        <section id="stops" class="stops">
-            <h2 style="text-align:center; margin-bottom:2rem; color:#007bff;">Eight London Stops in a personal and community journey</h2>
-            
-            <div class="stop">
-              <h3>
-                <a href="stop-1-royal-london-hospital.html">
-                  1. Royal London Hospital / Tower Hamlets Town Hall
-                </a>
-              </h3>
-              <p>Beginnings. Bengali generations born here 1967 onwards.</p>
-            </div>      
-
-            <div class="stop">
-              <h3>
-                <a href="stop-2-east-london-mosque.html">
-                  2. East London Mosque
-                </a>
-              </h3>
-              <p>A beating heart. Community through struggle since 1941.</p>
+    <main>
+        <section>
+            <div class="stop-card">
+                <h2>First Stop</h2>
+                <p>Description of the first stop.</p>
+                <a href="#" class="stop-link">Learn more</a>
             </div>
-            
-            <div class="stop">
-              <h3>
-                <a href="stop-3-fieldgate-mansions.html">
-                  3. Fieldgate Mansions
-                </a>
-              </h3>
-              <p>Squatting for a home. Bengali Housing Action Group squats.</p>
-            </div>
-            
-            <div class="stop">
-              <h3>
-                <a href="stop-4-altab-ali-park.html">
-                  4. Altab Ali Park
-                </a>
-              </h3>
-              <p>1978 fascist murder → resistance. 7,000 marched.</p>
-            </div>
-            
-            <div class="stop">
-              <h3>
-                <a href="stop-5-brick-lane-mosque.html">
-                  5. Brick Lane Mosque
-                </a>
-              </h3>
-              <p>Migrant histories. Chapel→synagogue→mosque.</p>
-            </div>
-            
-            <div class="stop">
-              <h3>
-                <a href="stop-6-bangla-town.html">
-                  6. Bangla Town
-                </a>
-              </h3>
-              <p>Rise and fall of the curry house. 60→23 restaurants.</p>
-            </div>
-            
-            <div class="stop">
-              <h3>
-                <a href="stop-7-truman-brewery.html">
-                  7. Truman Brewery
-                </a>
-              </h3>
-              <p>Death of Brick Lane. Gentrification battle.</p>
-            </div>
-            
-            <div class="stop">
-              <h3>
-                <a href="stop-8-arnold-circus.html">
-                  8. Arnold Circus
-                </a>
-              </h3>
-              <p>Gentrification + homes. Still here? 130-year cycles.</p>
+            <div class="stop-card">
+                <h2>Second Stop</h2>
+                <p>Description of the second stop.</p>
+                <a href="#" class="stop-link">Learn more</a>
             </div>
         </section>
-    </div>
-    
+    </main>
     <footer>
-        <p>&copy; 2026 Bangladeshi London Story | Made with ❤️</p>
+        <p>&copy; 2026 Bangladeshi London Story</p>
     </footer>
 </body>
 </html>
