@@ -11,21 +11,32 @@
         nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; }
         nav li { margin: 0 1rem; }
         nav a { color: white; text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; display: block; }
+        nav a:hover { background: #007bff; }
         .hero { background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), #007bff; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 80px; }
         .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         .stops { padding-top: 100px; }
         .stop { background: #007bff; color: white; margin: 20px 0; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
-        .stop h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .stop h3 { font-size: 1.5rem; margin-bottom: 1rem; border-bottom: 2px solid white; padding-bottom: 0.5rem; }
+        .section { padding: 100px 20px; }
+        .about { background: #f8f9fa; }
+        .contact { background: #e9ecef; }
+        .contact form { max-width: 500px; margin: 0 auto; }
+        .contact input, .contact textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; }
+        .contact button { background: #007bff; color: white; padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; }
         footer { background: #1a1a1a; color: white; text-align: center; padding: 2rem; margin-top: 4rem; }
-        @media (max-width: 768px) { nav ul { flex-direction: column; align-items: center; } .hero h1 { font-size: 2rem; } }
+        @media (max-width: 768px) { 
+            nav ul { flex-direction: column; align-items: center; } 
+            .hero h1 { font-size: 2rem; } 
+            .hero { height: 80vh; }
+        }
     </style>
 </head>
 <body>
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
-            <li><a href="#stops">Stops</a></li>
+            <li><a href="#stops">8 Stops</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -33,31 +44,77 @@
     
     <section id="home" class="hero">
         <h1>Here to Stay</h1>
-        <p>Bangladeshi London Story</p>
+        <p>Bangladeshi London Story<br>Banglatown Walking Tour</p>
     </section>
     
     <div class="container">
         <section id="stops" class="stops">
+            <h2 style="text-align:center; margin-bottom:2rem; color:#007bff;">8 Iconic Bangladeshi London Stops</h2>
+            
             <div class="stop">
-                <h3>Stop 1: Brick Lane</h3>
-                <p>Curry houses, street art, Bangladeshi heart of London.</p>
+                <h3>1. Brick Lane</h3>
+                <p>Curry capital of UK, Banglatown heart. Street art, vintage shops, 100+ restaurants. Green/red lampposts = Bangladesh flag colors. [web:242]</p>
             </div>
+            
             <div class="stop">
-                <h3>Stop 2: Whitechapel Market</h3>
-                <p>Fresh produce, sari shops, daily Bangladeshi life.</p>
+                <h3>2. Whitechapel Market</h3>
+                <p>Daily Bangladeshi life - fresh fish, sari shops, halal meat. Bengali signs everywhere. Vibrant street market since 1970s. [web:243]</p>
             </div>
-            <!-- Add your 6 more stops here -->
-            <div class="stop"><h3>Stop 3</h3><p>...</p></div>
-            <div class="stop"><h3>Stop 4</h3><p>...</p></div>
-            <div class="stop"><h3>Stop 5</h3><p>...</p></div>
-            <div class="stop"><h3>Stop 6</h3><p>...</p></div>
-            <div class="stop"><h3>Stop 7</h3><p>...</p></div>
-            <div class="stop"><h3>Stop 8</h3><p>...</p></div>
+            
+            <div class="stop">
+                <h3>3. Altab Ali Park</h3>
+                <p>Memorial to murdered Bangladeshi worker (1978). Shaheed Minar replica honors martyrs. Anti-racism landmark. [web:242][web:246]</p>
+            </div>
+            
+            <div class="stop">
+                <h3>4. Brick Lane Mosque</h3>
+                <p>Huguenot chapel → Jewish synagogue → now mosque. Color-changing LED minaret. Symbol of East End immigration waves. [web:242][web:254]</p>
+            </div>
+            
+            <div class="stop">
+                <h3>5. East London Mosque</h3>
+                <p>1941 community hub. Largest in UK. Architectural landmark in Whitechapel. [web:245]</p>
+            </div>
+            
+            <div class="stop">
+                <h3>6. Kobi Nazrul Centre</h3>
+                <p>Bengali arts hub. Exhibitions, plays, rebel poet namesake. Cultural heartbeat. [web:242]</p>
+            </div>
+            
+            <div class="stop">
+                <h3>7. Sunday Upmarket</h3>
+                <p>Brick Lane food hall. Largest halal street food selection. Bangladeshi flavors + global fusion. [web:242]</p>
+            </div>
+            
+            <div class="stop">
+                <h3>8. Shadwell & Toynbee Hall</h3>
+                <p>Early Bengali settlement (1880s lascars). Social reform history. Modern regeneration. [web:246][web:248]</p>
+            </div>
         </section>
     </div>
     
+    <section id="about" class="section about">
+        <div class="container">
+            <h2>About Banglatown</h2>
+            <p>Brick Lane = Bangladeshi heart of London since 1970s. From Sylheti migrants fleeing Bangladesh war to today's thriving community of 80,000+. Tower Hamlets home to UK's largest Bangladeshi population. Curry houses generated £90M economy. Cultural fusion with street art, markets, mosques. [web:245][web:251]</p>
+        </div>
+    </section>
+    
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2>Get Involved</h2>
+            <p>Share your Bangladeshi London story! <br>Email: <a href="mailto:story@bengali.london">story@bengali.london</a></p>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Story / Memory..."></textarea>
+                <button type="submit">Share Story</button>
+            </form>
+        </div>
+    </section>
+    
     <footer>
-        <p>&copy; 2026 Bangladeshi London Story. Made with ❤️</p>
+        <p>&copy; 2026 Bangladeshi London Story | Made with ❤️ in Glória, Rio | <a href="#home" style="color:#ccc;">Top</a></p>
     </footer>
 </body>
 </html>
