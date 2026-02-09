@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bangladeshi London Story</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
@@ -16,7 +20,6 @@
             background: linear-gradient(180deg, #f8f9ff 0%, #f0f4ff 100%);
         }
         
-        /* Enhanced nav with active glow */
         nav { 
             background: linear-gradient(135deg, #1a1a1a, #2d2d2d); 
             padding: 0.75rem 0; 
@@ -54,8 +57,7 @@
             box-shadow: 0 4px 15px rgba(0,123,255,0.4);
         }
 
-        /* Progress dots under nav */
-        .progress-dots {
+       .progress-dots {
             position: fixed;
             top: 65px;
             left: 50%;
@@ -67,89 +69,68 @@
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
         }
-        .progress-dot {
+       .progress-dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
             background: rgba(255,255,255,0.4);
             transition: all 0.3s ease;
         }
-        .progress-dot.active {
+       .progress-dot.active {
             background: #ff4444;
             transform: scale(1.3);
             box-shadow: 0 0 10px rgba(255,68,68,0.8);
         }
 
-        .hero {
+       .hero {
             background: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)), url('assets/hero.jpg');
             background-size: cover;
             background-position: center;
-            min-height: 70vh;
+            min-height: 50vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            padding: 90px 1rem 2rem; /* space for nav + dots */
+            padding: 90px 1rem 2rem;
             position: relative;
             overflow: hidden;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,68,68,0.1) 50%, transparent 70%);
-            animation: shimmer 6s infinite;
-        }
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        .hero h1 { 
+       .hero h1 { 
             font-size: clamp(1.8rem, 6vw, 3.5rem); 
             margin-bottom: 0.75rem; 
             text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            animation: fadeInUp 1s ease;
         }
-        .hero p { 
+       .hero p { 
             font-size: clamp(1rem, 4vw, 1.3rem); 
             max-width: 90%;
-            opacity: 0;
-            animation: fadeInUp 1s ease 0.3s forwards;
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        /* Map Container */
+        #map {
+            height: 450px;
+            width: 100%;
+            z-index: 1;
+            border-bottom: 4px solid #007bff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        
-        .container { 
+
+       .container { 
             max-width: 800px; 
             margin: 0 auto; 
             padding: 2rem 1rem; 
         }
         
-        .stops { padding-top: 20px; }
-        .stops h2 { 
+       .stops { padding-top: 20px; }
+       .stops h2 { 
             text-align: center; 
             margin-bottom: 2.5rem; 
             color: #007bff;
             font-size: clamp(1.5rem, 5vw, 2.5rem);
-            position: relative;
-        }
-        .stops h2::after {
-            content: '➜';
-            display: block;
-            font-size: 2rem;
-            color: #ff4444;
-            margin-top: 0.25rem;
         }
         
-        /* Enhanced stop cards */
-        .stop { 
+       .stop { 
             background: linear-gradient(135deg, #007bff, #0056b3); 
             color: white; 
             margin: 1.25rem 0; 
@@ -160,31 +141,24 @@
             position: relative;
             overflow: hidden;
         }
-        .stop::before {
+       .stop::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
+            top: 0; left: 0; width: 4px; height: 100%;
             background: linear-gradient(180deg, #ff4444, #ff6666);
         }
-        .stop:hover, .stop:active { 
-            transform: translateY(-8px) scale(1.02);
+       .stop:hover { 
+            transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0,123,255,0.5);
         }
-        .stop h3 { 
+       .stop h3 { 
             font-size: clamp(1.2rem, 4vw, 1.7rem); 
             margin-bottom: 0.75rem; 
             border-bottom: 3px solid #ff4444; 
             padding-bottom: 0.75rem;
             font-weight: 800;
         }
-        .stop h3 a {
-            color: white;
-            text-decoration: none;
-        }
-        .stop p { 
+       .stop p { 
             margin: 0.5rem 0;
             font-size: 1.05rem;
             line-height: 1.55;
@@ -196,30 +170,11 @@
             text-align: center; 
             padding: 2rem 1rem; 
             margin-top: 4rem;
-            font-size: 0.95rem;
-            position: relative;
         }
-        footer::before {
-            content: '❤️';
-            display: block;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Desktop enhancements */
+
         @media (min-width: 768px) {
-            nav ul { padding: 0 1rem; }
-            nav a { font-size: 0.95rem; padding: 0.6rem 1.25rem; }
-            .hero { min-height: 100vh; padding-top: 90px; }
-            .stops { padding-top: 40px; }
-            .container { padding: 3rem 2rem; }
-            .stop { margin: 2rem 0; padding: 2.5rem 2.5rem; }
-            .progress-dots { top: 70px; }
-        }
-        
-        @media (max-width: 480px) {
-            .container { padding: 1.5rem 1rem; }
-            .stop { padding: 1.25rem 1rem; margin: 1rem 0; }
+            #map { height: 600px; }
+           .container { padding: 3rem 2rem; }
         }
     </style>
 </head>
@@ -227,104 +182,78 @@
     <nav>
         <ul>
             <li><a href="#home">🏠 Home</a></li>
-            <li><a href="#stops">🗺️ 8 Stops</a></li>
+            <li><a href="#map">🗺️ Map</a></li>
+            <li><a href="#stops">📍 8 Stops</a></li>
             <li><a href="#about">ℹ️ About</a></li>
-            <li><a href="#contact">✉️ Contact</a></li>
         </ul>
     </nav>
     
-    <!-- Progress dots -->
-    <div class="progress-dots" style="display: none;">
-        <div class="progress-dot active" data-stop="1"></div>
-        <div class="progress-dot" data-stop="2"></div>
-        <div class="progress-dot" data-stop="3"></div>
-        <div class="progress-dot" data-stop="4"></div>
-        <div class="progress-dot" data-stop="5"></div>
-        <div class="progress-dot" data-stop="6"></div>
-        <div class="progress-dot" data-stop="7"></div>
-        <div class="progress-dot" data-stop="8"></div>
+    <div class="progress-dots">
+        <div class="progress-dot active"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
+        <div class="progress-dot"></div>
     </div>
     
     <section id="home" class="hero">
         <h1>Here to Stay</h1>
-        <p>Bangladeshi London Story</p>
+        <p>A London Story of Bangladeshis</p>
     </section>
+
+    <div id="map"></div>
     
     <div class="container">
         <section id="stops" class="stops">
-            <h2>Eight London Stops</h2>
+            <h2>Eight Historical Stops</h2>
             
-            <div class="stop" data-stop="1">
-              <h3>
-                <a href="stop-1-royal-london-hospital.html">
-                  📍 1. Royal London/Town Hall
-                </a>
-              </h3>
-              <p>Beginnings. Bengali generations born here 1967 onwards.</p>
+            <div class="stop" id="stop-1">
+                <h3>📍 1. Royal London Hospital</h3>
+                <p>We begin with my birth in 1967 and the 1993 Quddus Ali rally. This building frames vital questions of violence, healthcare, and political power in the East End.</p>
             </div>      
 
-            <div class="stop" data-stop="2">
-              <h3>
-                <a href="stop-2-east-london-mosque.html">
-                  📍 2. East London Mosque
-                </a>
-              </h3>
-              <p>🕌 A beating heart. Community through struggle since 1941.</p>
+            <div class="stop" id="stop-2">
+                <h3>📍 2. East London Mosque</h3>
+                <p>The institutional backbone of the borough. A site of spiritual sanctuary and community struggle since its founding in 1941.</p>
             </div>
             
-            <div class="stop" data-stop="3">
-              <h3>
-                <a href="stop-3-fieldgate-mansions.html">
-                  📍 3. Fieldgate Mansions
-                </a>
-              </h3>
-              <p>🏠 Squatting for a home ➜ Bengali Housing Action Group squats.</p>
+            <div class="stop" id="stop-3">
+                <h3>📍 3. Fieldgate Mansions</h3>
+                <p>Where the Bengali Housing Action Group (BHAG) turned legal squatting into permanent homes, winning a landmark victory for housing rights in the 1970s.</p>
             </div>
             
-            <div class="stop" data-stop="4">
-              <h3>
-                <a href="stop-4-altab-ali-park.html">
-                  📍 4. Altab Ali Park
-                </a>
-              </h3>
-              <p>⚔️ 1978 fascist murder ➜ 7,000 marched.</p>
+            <div class="stop" id="stop-4">
+                <h3>📍 4. Altab Ali Park</h3>
+                <p>Commemorating the 1978 racist murder that sparked a 7,000-strong march to Downing Street and the defiant slogan "Here to stay, here to fight."</p>
             </div>
             
-            <div class="stop" data-stop="5">
-              <h3>
-                <a href="stop-5-brick-lane-mosque.html">
-                  📍 5. Brick Lane Mosque
-                </a>
-              </h3>
-              <p>🕍 Migrant histories ➜ Chapel→Synagogue→Mosque.</p>
+            <div class="stop" id="stop-5">
+                <h3>📍 5. Brick Lane Mosque</h3>
+                <p>A "palimpsest" of migration. Once a Huguenot chapel, then a Methodist church, then a synagogue, and since 1976, a mosque.</p>
             </div>
             
-            <div class="stop" data-stop="6">
-              <h3>
-                <a href="stop-6-bangla-town.html">
-                  📍 6. Bangla Town
-                </a>
-              </h3>
-              <p>🍛 Rise & fall ➜ 60→23 restaurants.</p>
+            <div class="stop" id="stop-6">
+                <h3>📍 6. Banglatown</h3>
+                <p>Walking through the heart of the "curry capital." We reflect on the rise and shift of the garment and restaurant trades along Brick Lane.</p>
             </div>
             
-            <div class="stop" data-stop="7">
-              <h3>
-                <a href="stop-7-truman-brewery.html">
-                  📍 7. Truman Brewery
-                </a>
-              </h3>
-              <p>💥 Death of Brick Lane ➜ Gentrification battle.</p>
+            <div class="stop" id="stop-7">
+                <h3>📍 7. Truman Brewery</h3>
+                <p>A live confrontation with gentrification. We discuss the "Save Brick Lane" campaign and the ongoing battle for community space in 2026.</p>
             </div>
             
-            <div class="stop" data-stop="8">
-              <h3>
-                <a href="stop-8-arnold-circus.html">
-                  📍 8. Arnold Circus
-                </a>
-              </h3>
-              <p>🔄 Gentrification + homes ➜ 130-year cycles.</p>
+            <div class="stop" id="stop-8">
+                <h3>📍 8. Arnold Circus</h3>
+                <p>The tour ends at the Boundary Estate. Here, 130 years of housing policy, from Victorian slum clearance to modern regeneration, can be read in the brickwork.</p>
             </div>
+        </section>
+
+        <section id="about">
+            <h2 style="color:#007bff; margin-top:2rem;">About the Seminar</h2>
+            <p>Led by Hussain Ismail, this two-hour walking seminar traces the line from 1940s merchant seamen to modern political representation. Access to archival photos, audio clips, and further reading is provided via this portal.</p>
         </section>
     </div>
     
@@ -333,20 +262,49 @@
     </footer>
 
     <script>
-        // Show progress dots on stops section
-        if (window.location.hash === '#stops') {
-            document.querySelector('.progress-dots').style.display = 'flex';
+        // 1. Initialize Map
+        const map = L.map('map').setView([51.518, -0.065], 15);
+
+        // 2. Add OpenStreetMap Tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // 3. Define the 8 Stops with coordinates
+        const stopCoords =;
+
+        // 4. Place Markers
+        stopCoords.forEach((stop, index) => {
+            L.marker([stop.lat, stop.lng])
+               .addTo(map)
+               .bindPopup(`<b>Stop ${index + 1}:</b><br>${stop.name}`);
+        });
+
+        // 5. GPS "Find Me" Feature
+        map.locate({setView: false, watch: true, enableHighAccuracy: true});
+
+        function onLocationFound(e) {
+            const radius = e.accuracy / 2;
+            if (window.userMarker) { 
+                window.userMarker.setLatLng(e.latlng);
+                window.userCircle.setLatLng(e.latlng).setRadius(radius);
+            } else {
+                window.userMarker = L.marker(e.latlng).addTo(map).bindPopup("You are here").openPopup();
+                window.userCircle = L.circle(e.latlng, radius, { color: '#ff4444', fillOpacity: 0.2 }).addTo(map);
+            }
         }
-        
-        // Update active dot on scroll (simple version)
+        map.on('locationfound', onLocationFound);
+
+        // 6. Progress Dot Scrolling Logic
         window.addEventListener('scroll', () => {
             const stops = document.querySelectorAll('.stop');
+            const dots = document.querySelectorAll('.progress-dot');
+            
             stops.forEach((stop, index) => {
                 const rect = stop.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.5) {
-                    document.querySelectorAll('.progress-dot')[index].classList.add('active');
-                } else {
-                    document.querySelectorAll('.progress-dot')[index].classList.remove('active');
+                if (rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.5) {
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[index].classList.add('active');
                 }
             });
         });
