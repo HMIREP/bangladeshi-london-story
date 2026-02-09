@@ -14,7 +14,7 @@
             overflow-x: hidden;
         }
         
-        /* Fixed nav optimized for mobile */
+        /* Fixed nav - single row on ALL screens */
         nav { 
             background: #1a1a1a; 
             padding: 0.75rem 0; 
@@ -27,14 +27,13 @@
             list-style: none; 
             display: flex; 
             justify-content: center; 
-            flex-wrap: wrap; 
-            gap: 0.25rem;
-            padding: 0 1rem;
+            flex-wrap: nowrap; /* Force single row */
+            gap: 0;
+            padding: 0 0.5rem;
+            overflow-x: auto; /* Scroll if needed (rare) */
         }
         nav li { 
-            flex: 1 1 45%; /* 2 per row on mobile */
-            text-align: center;
-            margin: 0;
+            flex: 0 0 auto; /* Don't grow/shrink */
         }
         nav a { 
             color: white; 
@@ -43,7 +42,8 @@
             padding: 0.5rem 0.75rem; 
             display: block; 
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 0.85rem; /* Slightly smaller for single row */
+            white-space: nowrap;
         }
         nav a:hover { background: #007bff; }
 
@@ -51,14 +51,14 @@
             background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url('assets/hero.jpg');
             background-size: cover;
             background-position: center;
-            min-height: 70vh; /* shorter on mobile */
+            min-height: 70vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            padding: 80px 1rem 2rem; /* account for nav */
+            padding: 80px 1rem 2rem;
         }
         .hero h1 { 
             font-size: clamp(1.8rem, 5vw, 3rem); 
@@ -70,12 +70,12 @@
         }
         
         .container { 
-            max-width: 800px; /* narrower for phone readability */
+            max-width: 800px; 
             margin: 0 auto; 
             padding: 1.5rem 1rem; 
         }
         
-        .stops { padding-top: 20px; } /* less top padding since hero is shorter */
+        .stops { padding-top: 20px; }
         .stops h2 { 
             text-align: center; 
             margin-bottom: 2rem; 
@@ -93,7 +93,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             transition: transform 0.2s;
         }
-        .stop:active { /* visual feedback on tap */
+        .stop:active { 
             transform: scale(0.98);
         }
         .stop h3 { 
@@ -123,8 +123,8 @@
         
         /* Desktop enhancements only */
         @media (min-width: 768px) {
-            nav li { flex: 0 1 auto; }
-            nav ul { gap: 0; }
+            nav ul { padding: 0 1rem; }
+            nav a { font-size: 0.9rem; padding: 0.5rem 1rem; }
             .hero { min-height: 100vh; padding-top: 80px; }
             .stops { padding-top: 100px; }
             .container { padding: 3rem 2rem; }
@@ -155,12 +155,12 @@
     
     <div class="container">
         <section id="stops" class="stops">
-            <h2>Eight London Stops in a personal and community journey</h2>
+            <h2>Eight London Stops</h2>
             
             <div class="stop">
               <h3>
                 <a href="stop-1-royal-london-hospital.html">
-                  1. Royal London Hospital / Tower Hamlets Town Hall
+                  1. Royal London/Town Hall
                 </a>
               </h3>
               <p>Beginnings. Bengali generations born here 1967 onwards.</p>
