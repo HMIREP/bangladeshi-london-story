@@ -73,6 +73,7 @@
             border-radius: 50%;
             background: rgba(255,255,255,0.4);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         .progress-dot.active {
             background: #ff4444;
@@ -234,7 +235,7 @@
     </nav>
     
     <!-- Progress dots -->
-    <div class="progress-dots" style="display: none;">
+    <div class="progress-dots" aria-label="Story stops progress">
         <div class="progress-dot active" data-stop="1"></div>
         <div class="progress-dot" data-stop="2"></div>
         <div class="progress-dot" data-stop="3"></div>
@@ -326,6 +327,16 @@
               <p>🔄 Gentrification + homes ➜ 130-year cycles.</p>
             </div>
         </section>
+
+        <!-- Empty About section -->
+        <section id="about" class="stops">
+            <h2>About</h2>
+        </section>
+
+        <!-- Empty Contact section -->
+        <section id="contact" class="stops">
+            <h2>Contact</h2>
+        </section>
     </div>
     
     <footer>
@@ -333,20 +344,60 @@
     </footer>
 
     <script>
-        // Show progress dots on stops section
-        if (window.location.hash === '#stops') {
-            document.querySelector('.progress-dots').style.display = 'flex';
+        const progressDots = document.querySelector('.progress-dots');
+        const dots = document.querySelectorAll('.progress-dot');
+        const stops = document.querySelectorAll('.stop');
+
+        function updateDotsVisibility() {
+            const stopsSection = document.getElementById('stops');
+            const rect = stopsSection.getBoundingClientRect();
+            const inView = rect.top <= 80 && rect.bottom >= 80;
+            progressDots.style.display = inView ? 'flex' : 'none';
         }
-        
-        // Update active dot on scroll (simple version)
-        window.addEventListener('scroll', () => {
-            const stops = document.querySelectorAll('.stop');
+
+        function setActiveDot(index) {
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[index]) {
+                dots[index].classList.add('active');
+            }
+        }
+
+        function updateActiveDotOnScroll() {
+            let activeIndex = 0;
+            const viewportMiddle = window.innerHeight / 2;
+
             stops.forEach((stop, index) => {
                 const rect = stop.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.5) {
-                    document.querySelectorAll('.progress-dot')[index].classList.add('active');
-                } else {
-                    document.querySelectorAll('.progress-dot')[index].classList.remove('active');
+                const stopMiddle = rect.top + rect.height / 2;
+                const distance = Math.abs(stopMiddle - viewportMiddle);
+
+                if (index === 0 || distance < Math.abs(stops[activeIndex].getBoundingClientRect().top + stops[activeIndex].getBoundingClientRect().height / 2 - viewportMiddle)) {
+                    activeIndex = index;
+                }
+            });
+
+            setActiveDot(activeIndex);
+        }
+
+        // Scroll listener
+        window.addEventListener('scroll', () => {
+            updateDotsVisibility();
+            updateActiveDotOnScroll();
+        });
+
+        // On load: initial state
+        window.addEventListener('load', () => {
+            updateDotsVisibility();
+            updateActiveDotOnScroll();
+        });
+
+        // Optional: clicking a dot scrolls to that stop
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const stopNumber = parseInt(dot.getAttribute('data-stop'), 10);
+                const targetStop = document.querySelector(`.stop[data-stop="${stopNumber}"]`);
+                if (targetStop) {
+                    targetStop.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             });
         });
