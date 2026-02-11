@@ -5,57 +5,185 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stop 1 – Royal London Hospital / Tower Hamlets Town Hall</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       line-height: 1.6;
+      color: #333;
+      background: linear-gradient(180deg, #f8f9ff 0%, #f0f4ff 100%);
+      padding: 2rem 1rem;
       max-width: 800px;
       margin: 0 auto;
-      padding: 20px;
-      color: #333;
     }
-    a { color: #007bff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header, footer { margin-bottom: 20px; }
-    h1 { margin-top: 10px; }
-    h2 { margin-top: 30px; color: #007bff; }
+    
+    /* Match index.html nav style */
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: #007bff;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      background: rgba(0,123,255,0.1);
+      transition: all 0.3s ease;
+    }
+    .back-link:hover {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      transform: translateY(-1px);
+    }
+    
+    h1 { 
+      font-size: clamp(1.8rem, 6vw, 2.8rem); 
+      color: #007bff;
+      margin-bottom: 0.75rem;
+      font-weight: 800;
+    }
+    .strapline {
+      font-size: 1.1rem;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      max-width: 90%;
+    }
+    
+    /* Photo gallery carousel - SLIDES perfectly */
+    .stop-gallery {
+      margin: 0 -1rem 2rem;
+      padding: 0 1rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+    .stop-gallery::-webkit-scrollbar { display: none; }
+    .stop-gallery-track {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    .stop-photo {
+      flex: 0 0 200px;
+      height: 140px;
+      border-radius: 16px;
+      background-size: cover;
+      background-position: center;
+      scroll-snap-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+    .stop-photo:hover {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+    
+    h2 { 
+      color: #007bff;
+      font-size: 1.5rem;
+      margin: 2.5rem 0 1.25rem;
+      position: relative;
+    }
+    h2::after {
+      content: '➜';
+      display: inline-block;
+      margin-left: 0.5rem;
+      color: #ff4444;
+    }
+    p, li {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.75rem;
+    }
+    
+    /* Footer nav */
+    .footer-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 2px solid rgba(0,123,255,0.2);
+    }
+    .footer-nav a {
+      color: white;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex: 1;
+      text-align: center;
+    }
+    .footer-nav a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+    }
+    
+    /* Responsive */
+    @media (min-width: 768px) {
+      body { padding: 3rem 2rem; }
+      .stop-photo { flex: 0 0 280px; height: 180px; }
+    }
+    @media (max-width: 480px) {
+      .stop-photo { flex: 0 0 160px; height: 110px; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <a href="index.html">← Back to Home</a>
-  </header>
+  <a href="index.html" class="back-link">← Back to Home</a>
 
   <h1>Stop 1 – Royal London Hospital / Tower Hamlets Town Hall</h1>
-  <p><em>Beginnings: birth, migration, and how this borough becomes home.</em></p>
+  <p class="strapline">Beginnings: birth, migration, and how this borough becomes home.</p>
+
+  <!-- 4-PHOTO SLIDING GALLERY -->
+  <div class="stop-gallery">
+    <div class="stop-gallery-track">
+      <div class="stop-photo" style="background-image: url('../assets/stop1-1.jpg');"></div>
+      <div class="stop-photo" style="background-image: url('../assets/stop1-2.jpg');"></div>
+      <div class="stop-photo" style="background-image: url('../assets/stop1-3.jpg');"></div>
+      <div class="stop-photo" style="background-image: url('../assets/stop1-4.jpg');"></div>
+    </div>
+  </div>
 
   <h2>What this stop covers</h2>
   <p>
-    This stop connects my own birth at the Royal London Hospital, my father’s journey as a
+    This stop connects my own birth at the Royal London Hospital, my father's journey as a
     merchant seaman, and the much longer history of migrant patients, workers and residents
-    who passed through this building and this borough.[file:43]
+    who passed through this building and this borough.
   </p>
   <p>
     We also introduce the Quddus Ali case in the 1990s and ask how a place marked by racist
-    violence ends up with a Bangladeshi mayor and MPs – and what that does and doesn’t
-    change about everyday life.[file:43]
+    violence ends up with a Bangladeshi mayor and MPs – and what that does and doesn't
+    change about everyday life.
   </p>
 
   <h2>Key facts</h2>
   <ul>
-    <li>The Royal London began life in the 18th century as one of Britain’s earliest public / charitable hospitals.[file:43]</li>
-    <li>Tower Hamlets today has one of the highest proportions of Muslim and Bangladeshi residents of any local authority in England and Wales.[file:43]</li>
-    <li>The former hospital building now houses Tower Hamlets Town Hall, where decisions about housing, planning and services for this community are made.[file:43]</li>
+    <li>The Royal London began life in the 18th century as one of Britain's earliest public / charitable hospitals.</li>
+    <li>Tower Hamlets today has one of the highest proportions of Muslim and Bangladeshi residents of any local authority in England and Wales.</li>
+    <li>The former hospital building now houses Tower Hamlets Town Hall, where decisions about housing, planning and services for this community are made.</li>
   </ul>
 
   <h2>Questions to bring with you</h2>
   <ul>
-    <li>What happens when your own birth place is also a site of racist attacks and protests – how does that shape your sense of belonging?[file:43]</li>
-    <li>When a hospital becomes a town hall, what really changes about who has power and who doesn’t in a borough like this?[file:43]</li>
+    <li>What happens when your own birth place is also a site of racist attacks and protests – how does that shape your sense of belonging?</li>
+    <li>When a hospital becomes a town hall, what really changes about who has power and who doesn't in a borough like this?</li>
   </ul>
 
-  <footer>
-    <a href="stop-8-arnold-circus.html">← Previous stop</a> |
+  <div class="footer-nav">
+    <a href="stop-8-arnold-circus.html">← Previous stop</a>
     <a href="stop-2-east-london-mosque.html">Next stop →</a>
-  </footer>
+  </div>
 </body>
 </html>
+
