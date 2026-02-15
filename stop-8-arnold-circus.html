@@ -5,58 +5,176 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stop 8 – Arnold Circus / Boundary Estate</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       line-height: 1.6;
+      color: #333;
+      background: linear-gradient(180deg, #f8f9ff 0%, #f0f4ff 100%);
+      padding: 2rem 1rem;
       max-width: 800px;
       margin: 0 auto;
-      padding: 20px;
-      color: #333;
     }
-    a { color: #007bff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header, footer { margin-bottom: 20px; }
-    h1 { margin-top: 10px; }
-    h2 { margin-top: 30px; color: #007bff; }
+    
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: #007bff;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      background: rgba(0,123,255,0.1);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .back-link:hover {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      transform: translateY(-1px);
+    }
+    
+    h1 { 
+      font-size: clamp(1.8rem, 6vw, 2.8rem); 
+      color: #007bff;
+      margin-bottom: 0.75rem;
+      font-weight: 800;
+    }
+    .strapline {
+      font-size: 1.1rem;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      max-width: 90%;
+    }
+    
+    .stop-gallery {
+      margin: 0 -1rem 2rem;
+      padding: 0 1rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+    .stop-gallery::-webkit-scrollbar { display: none; }
+    .stop-gallery-track {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    .stop-photo {
+      flex: 0 0 200px;
+      height: 140px;
+      border-radius: 16px;
+      background-size: cover;
+      background-position: center;
+      scroll-snap-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+    .stop-photo:hover {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+    
+    h2 { 
+      color: #007bff;
+      font-size: 1.5rem;
+      margin: 2.5rem 0 1.25rem;
+      position: relative;
+    }
+    h2::after {
+      content: '➜';
+      display: inline-block;
+      margin-left: 0.5rem;
+      color: #ff4444;
+    }
+    p, li {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.75rem;
+    }
+    
+    .footer-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 2px solid rgba(0,123,255,0.2);
+    }
+    .footer-nav a {
+      color: white;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex: 1;
+      text-align: center;
+    }
+    .footer-nav a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+    }
+    
+    @media (min-width: 768px) {
+      body { padding: 3rem 2rem; }
+      .stop-photo { flex: 0 0 280px; height: 180px; }
+    }
+    @media (max-width: 480px) {
+      .stop-photo { flex: 0 0 160px; height: 110px; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <a href="index.html">← Back to Home</a>
-  </header>
+  <a href="index.html" class="back-link">← Back to Home</a>
 
-  <h1>Stop 8 – Arnold Circus / Boundary Estate</h1>
-  <p><em>130 years of housing cycles: slum clearance, social housing, gentrification.</em></p>
+  <h1>Stop 8 – Arnold Circus</h1>
+  <p class="strapline">Utopia in brick: 130 years of social housing and the birth of a new East End.</p>
+
+  <div class="stop-gallery">
+    <div class="stop-gallery-track">
+      <div class="stop-photo" style="background-image: url('assets/stop8-1.jpg');"></div>
+      <div class="stop-photo" style="background-image: url('assets/stop8-2.jpg');"></div>
+      <div class="stop-photo" style="background-image: url('assets/stop8-3.jpg');"></div>
+      <div class="stop-photo" style="background-image: url('assets/stop8-4.jpg');"></div>
+    </div>
+  </div>
 
   <h2>What this stop covers</h2>
   <p>
-    This stop looks at Arnold Circus and the Boundary Estate as one of the first major
-    council housing schemes in London, built on the cleared Old Nichol slum in the
-    1890s.[web:95][web:96][web:100]
+    Our tour ends at <strong>Arnold Circus</strong>, the center of the Boundary Estate. This was the world's first large-scale social housing project, built by the London County Council (LCC) to replace the "Old Nichol," one of Victorian London's most notorious and dangerous slums.
   </p>
   <p>
-    We trace how the estate moved from housing the “deserving poor” and Jewish tenants
-    to later Bangladeshi families, and how it is now under pressure from gentrification
-    and right‑to‑buy sales – echoing the wider housing story you’ve seen all along this
-    tour.[web:95][web:99][web:101]
+    Standing on the central mound—which is built from the literal rubble of the slums that were cleared away—we reflect on how housing policy has shaped the lives of migrant families. From the Victorian era to the 1970s housing actions, the story of the East End has always been a story of people fighting for a decent place to live.
   </p>
 
   <h2>Key facts</h2>
   <ul>
-    <li>The Boundary Estate was built between about 1894 and 1900, replacing around 15 acres of Old Nichol slums and displacing over 5,000 residents.[web:95][web:96][web:105]</li>
-    <li>Rents in the new estate were too high for most former slum dwellers, so many original residents were pushed further east into new overcrowded areas.[web:95][web:96][web:101]</li>
-    <li>Over the 20th century tenants included Jews fleeing pogroms and Nazism and later Bangladeshi families; today, the estate is mixed council, housing association and private, and residents have twice fought off attempts to transfer or sell blocks to other landlords.[web:95][web:99][web:101]</li>
+    <li>The Boundary Estate was opened in 1900 by the Prince of Wales. It replaced a slum where the infant mortality rate was twice that of the rest of London.</li>
+    <li>The design was revolutionary: wide streets, a laundry, a clubhouse, and apartments that allowed for light and air—luxuries the poor had never known.</li>
+    <li>Today, the estate remains a mix of social housing (housing many Bangladeshi families) and high-priced private apartments, showing how the history of social welfare and modern gentrification sit side-by-side.</li>
   </ul>
 
   <h2>Questions to bring with you</h2>
   <ul>
-    <li>When a housing scheme improves building standards but displaces most previous residents, is that social progress or just a different kind of injustice?[web:95][web:101]</li>
-    <li>How do the housing struggles you’ve heard about – from BHAG squats to Save Brick Lane – change how you see “fashionable” places like this today?[web:99][web:108]</li>
+    <li>When we "clear a slum" to build something better, who is left behind? Did the people of the Old Nichol actually get to live in these new, beautiful buildings?</li>
+    <li>Looking back at our whole walk—from the hospital where I was born to this bandstand—what is the common thread that makes someone a "Londoner"?</li>
   </ul>
 
-  <footer>
-    <a href="stop-7-truman-brewery.html">← Previous stop</a> |
-    <a href="index.html">Back to Home</a>
-  </footer>
+  <div class="footer-nav">
+    <a href="stop-7-truman-brewery.html">← Previous stop</a>
+    <a href="index.html">Finish Tour →</a>
+  </div>
 </body>
 </html>
