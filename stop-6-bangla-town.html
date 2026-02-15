@@ -3,59 +3,178 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stop 6 – Bangla Town (Brick Lane Restaurants)</title>
+  <title>Stop 6 – Bangla Town</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       line-height: 1.6;
+      color: #333;
+      background: linear-gradient(180deg, #f8f9ff 0%, #f0f4ff 100%);
+      padding: 2rem 1rem;
       max-width: 800px;
       margin: 0 auto;
-      padding: 20px;
-      color: #333;
     }
-    a { color: #007bff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header, footer { margin-bottom: 20px; }
-    h1 { margin-top: 10px; }
-    h2 { margin-top: 30px; color: #007bff; }
+    
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: #007bff;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      background: rgba(0,123,255,0.1);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .back-link:hover {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      transform: translateY(-1px);
+    }
+    
+    h1 { 
+      font-size: clamp(1.8rem, 6vw, 2.8rem); 
+      color: #007bff;
+      margin-bottom: 0.75rem;
+      font-weight: 800;
+    }
+    .strapline {
+      font-size: 1.1rem;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      max-width: 90%;
+    }
+    
+    .stop-gallery {
+      margin: 0 -1rem 2rem;
+      padding: 0 1rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+    .stop-gallery::-webkit-scrollbar { display: none; }
+    .stop-gallery-track {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    .stop-photo {
+      flex: 0 0 200px;
+      height: 140px;
+      border-radius: 16px;
+      background-size: cover;
+      background-position: center;
+      scroll-snap-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+    .stop-photo:hover {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+    
+    h2 { 
+      color: #007bff;
+      font-size: 1.5rem;
+      margin: 2.5rem 0 1.25rem;
+      position: relative;
+    }
+    h2::after {
+      content: '➜';
+      display: inline-block;
+      margin-left: 0.5rem;
+      color: #ff4444;
+    }
+    p, li {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.75rem;
+    }
+    
+    .footer-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 2px solid rgba(0,123,255,0.2);
+    }
+    .footer-nav a {
+      color: white;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex: 1;
+      text-align: center;
+    }
+    .footer-nav a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+    }
+    
+    @media (min-width: 768px) {
+      body { padding: 3rem 2rem; }
+      .stop-photo { flex: 0 0 280px; height: 180px; }
+    }
+    @media (max-width: 480px) {
+      .stop-photo { flex: 0 0 160px; height: 110px; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <a href="index.html">← Back to Home</a>
-  </header>
+  <a href="index.html" class="back-link">← Back to Home</a>
 
-  <h1>Stop 6 – Bangla Town (Brick Lane Restaurants)</h1>
-  <p><em>From curry capital to sharp decline under gentrification.</em></p>
+  <h1>Stop 6 – Bangla Town</h1>
+  <p class="strapline">Rise and fall: the story of the Curry Mile and the shifting economic heart.</p>
+
+  <div class="stop-gallery">
+    <div class="stop-gallery-track">
+      <div class="stop-photo" style="background-image: url('assets/stop6-1.jpg');"></div>
+      <div class="stop-photo" style="background-image: url('assets/stop6-2.jpg');"></div>
+      <div class="stop-photo" style="background-image: url('assets/stop6-3.jpg');"></div>
+      <div class="stop-photo" style="background-image: url('assets/stop6-4.jpg');"></div>
+    </div>
+  </div>
 
   <h2>What this stop covers</h2>
   <p>
-    This stop looks at the rise of “Bangla Town” in the 1990s–2000s, when Brick Lane became
-    famous for its Bangladeshi‑run curry houses, and at the steep decline in those
-    restaurants over the last 15–20 years.[web:66][web:70][web:71]
+    This section of Brick Lane was officially designated "Banglatown" in the late 1990s as part of a branding exercise to promote the area as a cultural and culinary destination. 
   </p>
   <p>
-    We connect this to changing rents and business rates, competition from new food
-    venues and chains, and the way cultural success made the street attractive to
-    developers and tourists but harder for local restaurateurs to survive.[web:66][web:72][web:73]
+    We discuss the transition from the hidden economy of **garment sweatshops** (where many first-generation Bangladeshis worked behind closed doors) to the highly visible **service economy** of the "Curry Mile." We also look at the decline: how a strip that once boasted around 60 restaurants now has fewer than half that number remaining.
   </p>
 
   <h2>Key facts</h2>
   <ul>
-    <li>In the mid‑2000s, Banglatown had around 60 Bangladeshi‑ or Pakistani‑owned curry restaurants and cafés on Brick Lane and Osborn Street.[web:66][web:70][web:71]</li>
-    <li>By early 2020, researchers counted only 23 such outlets – a drop of about 62% in 15 years.[web:66][web:70][web:71]</li>
-    <li>Owners report big rent and business‑rate hikes, competition from the Truman Brewery food court and nearby “hipster” cafés, and difficulties recruiting chefs due to visa rules.[web:66][web:72][web:77]</li>
+    <li>The street furniture—including the red and green lamp posts—was designed by Bengali artists to mirror the colors of the Bangladesh flag.</li>
+    <li>In the 1980s and 90s, the "curry house" became the primary symbol of Bangladeshi economic success in the UK, but it also became a target for racist "Paki-bashing" during the height of National Front activity.</li>
+    <li>Today, the high cost of rent and the changing tastes of a gentrified London are forcing many traditional family-run restaurants to close.</li>
   </ul>
 
   <h2>Questions to bring with you</h2>
   <ul>
-    <li>How can a street go from being marketed as “Banglatown” to losing most of its Bangladeshi restaurants within a generation?[web:66][web:71]</li>
-    <li>Who benefits when an area’s migrant food culture makes it famous, and who pays the price when the rents rise afterwards?[web:73][web:78]</li>
+    <li>Does turning a neighborhood into a "branded" tourist destination (like Banglatown) help preserve its culture, or does it turn it into a museum?</li>
+    <li>When a traditional industry like the curry trade begins to fade, what happens to the families who have relied on it for generations?</li>
   </ul>
 
-  <footer>
-    <a href="stop-5-brick-lane-mosque.html">← Previous stop</a> |
+  <div class="footer-nav">
+    <a href="stop-5-brick-lane-mosque.html">← Previous stop</a>
     <a href="stop-7-truman-brewery.html">Next stop →</a>
-  </footer>
+  </div>
 </body>
 </html>
