@@ -5,57 +5,177 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stop 5 – Brick Lane Mosque</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       line-height: 1.6;
+      color: #333;
+      background: linear-gradient(180deg, #f8f9ff 0%, #f0f4ff 100%);
+      padding: 2rem 1rem;
       max-width: 800px;
       margin: 0 auto;
-      padding: 20px;
-      color: #333;
     }
-    a { color: #007bff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header, footer { margin-bottom: 20px; }
-    h1 { margin-top: 10px; }
-    h2 { margin-top: 30px; color: #007bff; }
+    
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: #007bff;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      background: rgba(0,123,255,0.1);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .back-link:hover {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      transform: translateY(-1px);
+    }
+    
+    h1 { 
+      font-size: clamp(1.8rem, 6vw, 2.8rem); 
+      color: #007bff;
+      margin-bottom: 0.75rem;
+      font-weight: 800;
+    }
+    .strapline {
+      font-size: 1.1rem;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      max-width: 90%;
+    }
+    
+    .stop-gallery {
+      margin: 0 -1rem 2rem;
+      padding: 0 1rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+    .stop-gallery::-webkit-scrollbar { display: none; }
+    .stop-gallery-track {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+    .stop-photo {
+      flex: 0 0 200px;
+      height: 140px;
+      border-radius: 16px;
+      background-size: cover;
+      background-position: center;
+      scroll-snap-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+    .stop-photo:hover {
+      transform: scale(1.05) translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+    
+    h2 { 
+      color: #007bff;
+      font-size: 1.5rem;
+      margin: 2.5rem 0 1.25rem;
+      position: relative;
+    }
+    h2::after {
+      content: '➜';
+      display: inline-block;
+      margin-left: 0.5rem;
+      color: #ff4444;
+    }
+    p, li {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    li {
+      margin-bottom: 0.75rem;
+    }
+    
+    .footer-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 2px solid rgba(0,123,255,0.2);
+    }
+    .footer-nav a {
+      color: white;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      flex: 1;
+      text-align: center;
+    }
+    .footer-nav a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+    }
+    
+    @media (min-width: 768px) {
+      body { padding: 3rem 2rem; }
+      .stop-photo { flex: 0 0 280px; height: 180px; }
+    }
+    @media (max-width: 480px) {
+      .stop-photo { flex: 0 0 160px; height: 110px; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <a href="index.html">← Back to Home</a>
-  </header>
+  <a href="index.html" class="back-link">← Back to Home</a>
 
-  <h1>Stop 5 – Brick Lane Mosque (59 Brick Lane)</h1>
-  <p><em>One building, three faiths: Huguenots → Jews → Bangladeshis.</em></p>
+  <h1>Stop 5 – Brick Lane Mosque</h1>
+  <p class="strapline">The Palimpsest: three centuries of migration written in brick and stone.</p>
+
+  <div class="stop-gallery">
+    <div class="stop-gallery-track">
+      <div class="stop-photo" style="background-image: url('assets/stop5-1.jpg');"></div>
+      <div class="stop-photo" style="background-image: url('assets/stop5-2.jpg');"></div>
+      <div class="stop-photo" style="background-image: url('assets/stop5-3.jpg');"></div>
+      <div class="stop-photo" style="background-image: url('assets/stop5-4.jpg');"></div>
+    </div>
+  </div>
 
   <h2>What this stop covers</h2>
   <p>
-    This stop uses 59 Brick Lane – now the Brick Lane Jamme Masjid – to show how
-    successive migrant communities have made the East End their own: first French
-    Huguenot weavers, then Eastern European Jews, and now Bangladeshi Muslims.[web:51][web:53][web:55]
+    At the corner of Brick Lane and Fournier Street stands a building that is a <strong>palimpsest</strong>—a document that has been erased and overwritten multiple times, yet still shows traces of its original writing.
   </p>
   <p>
-    We also touch on how Jewish dominance of the garment trade passed to Bengali
-    workers and business owners from the 1960s–70s, turning old sweatshops into the
-    economic base of the Bangladeshi East End.[web:56][web:62]
+    This single structure has served as a place of worship for three different migrant groups, each arriving in London fleeing persecution or seeking economic survival, and each leaving their mark on the building's architecture and the surrounding streets.
   </p>
 
   <h2>Key facts</h2>
   <ul>
-    <li>The building at 59 Brick Lane was erected in the 1740s as a Huguenot chapel, then became a Methodist church, later the Spitalfields Great Synagogue, and since the 1970s a mosque.[web:51][web:53][web:55]</li>
-    <li>Jewish tailors and machinists dominated the local “rag trade” from the late 19th century until after World War II, when many families moved to North London suburbs.[web:56][web:62]</li>
-    <li>From the 1960s onwards, Bengali migrants increasingly worked in and then took over clothing and leather factories in and around Brick Lane, inheriting that industrial base.[web:56][web:62]</li>
+    <li><strong>1743:</strong> Built as <em>La Neuve Eglise</em>, a Protestant chapel for <strong>Huguenots</strong> fleeing religious persecution in France. Look up at the sundial on the south wall; it still bears the French inscription <em>"Umbra Sumus"</em> (We are shadows).</li>
+    <li><strong>1898:</strong> Converted into the <em>Machzikei Hadass</em> (Spitalfields Great Synagogue) for <strong>Jewish</strong> immigrants escaping pogroms in Russia and Eastern Europe.</li>
+    <li><strong>1976:</strong> Converted into the <strong>Brick Lane Jamme Masjid</strong> to serve the growing <strong>Bangladeshi</strong> community.</li>
+    <li>Across all three waves, the surrounding houses were used as workshops for the garment trade—silk weaving for the Huguenots, tailoring for the Jews, and leather/garment work for the Bangladeshis.</li>
   </ul>
 
   <h2>Questions to bring with you</h2>
   <ul>
-    <li>What does it mean that the same building has served Huguenot Protestants, Jewish congregants and Bangladeshi Muslims in turn?[web:51][web:53]</li>
-    <li>How does seeing this layered history affect the way you think about who “belongs” on Brick Lane today?[web:57][web:63]</li>
+    <li>Why do you think the same building was able to serve three different religions over 280 years? What does this tell us about the "nature" of migration in the East End?</li>
+    <li>The sundial says "We are shadows." Do you think migrant communities are shadows in London, or are they the light that makes the city's culture visible?</li>
   </ul>
 
-  <footer>
-    <a href="stop-4-altab-ali-park.html">← Previous stop</a> |
+  <div class="footer-nav">
+    <a href="stop-4-altab-ali-park.html">← Previous stop</a>
     <a href="stop-6-bangla-town.html">Next stop →</a>
-  </footer>
+  </div>
 </body>
 </html>
