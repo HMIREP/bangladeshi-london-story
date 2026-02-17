@@ -99,10 +99,7 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(45deg, transparent 30%, rgba(255,68,68,0.1) 50%, transparent 70%);
             animation: shimmer 6s infinite;
         }
@@ -141,7 +138,9 @@
             font-size: clamp(1.5rem, 5vw, 2.5rem);
             position: relative;
         }
-        .stops h2::after {
+
+        /* Red arrow ONLY for the stops title */
+        #stops-title::after {
             content: '➜';
             display: block;
             font-size: 2rem;
@@ -164,10 +163,7 @@
         .stop::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
+            top: 0; left: 0; width: 4px; height: 100%;
             background: linear-gradient(180deg, #ff4444, #ff6666);
         }
         .stop:hover, .stop:active { 
@@ -190,6 +186,35 @@
             font-size: 1.05rem;
             line-height: 1.55;
         }
+
+        /* Clean content sections for About and Contact */
+        .content-section {
+            padding-top: 60px;
+            margin-bottom: 4rem;
+        }
+        .content-section h2 {
+            text-align: center;
+            color: #007bff;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .content-section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: #444;
+        }
+        .email-link {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            margin-top: 0.5rem;
+        }
+        .email-link:hover { background: #0056b3; }
         
         footer { 
             background: linear-gradient(135deg, #1a1a1a, #2d2d2d); 
@@ -253,7 +278,7 @@
     
     <div class="container">
         <section id="stops" class="stops">
-            <h2>Eight London Stops</h2>
+            <h2 id="stops-title">Eight London Stops</h2>
             
             <div class="stop" data-stop="1">
               <h3>
@@ -261,7 +286,7 @@
                   📍 1. Royal London / Town Hall
                 </a>
               </h3>
-              <p>Beginnings. Bengali generations born here 1967 onwards.</p>
+              <p>🏥 Beginnings ➜ Bengali generations born here 1967 onwards.</p>
             </div>      
 
             <div class="stop" data-stop="2">
@@ -270,7 +295,7 @@
                   📍 2. East London Mosque
                 </a>
               </h3>
-              <p>🕌 A beating heart. Community through struggle since 1941.</p>
+              <p>🕌 A beating heart ➜ Community through struggle since 1941.</p>
             </div>
             
             <div class="stop" data-stop="3">
@@ -306,7 +331,7 @@
                   📍 6. Bangla Town
                 </a>
               </h3>
-              <p>🍛 Rise & fall ➜ 60→23 restaurants.</p>
+              <p>🍛 Curry Mile economy ➜ The heart of East London food culture.</p>
             </div>
             
             <div class="stop" data-stop="7">
@@ -315,7 +340,7 @@
                   📍 7. Truman Brewery
                 </a>
               </h3>
-              <p>💥 Death of Brick Lane ➜ Gentrification battle.</p>
+              <p>💥 Resistance ➜ The campaign to save Brick Lane's soul.</p>
             </div>
             
             <div class="stop" data-stop="8">
@@ -324,18 +349,23 @@
                   📍 8. Arnold Circus
                 </a>
               </h3>
-              <p>🔄 Gentrification + homes ➜ 130-year cycles.</p>
+              <p>🔄 Full circle ➜ Social housing history and architectural legacies.</p>
             </div>
         </section>
 
-        <!-- Empty About section -->
-        <section id="about" class="stops">
+        <!-- Populated About section -->
+        <section id="about" class="content-section">
             <h2>About</h2>
+            <p>I was born in Whitechapel in 1967, at the very hospital where our journey begins, Royal London Hospital (now the Town Hall). My story is tied to the streets of the East End, following in the footsteps of my father who arrived as a merchant seaman in the 1940s.</p>
+            <p>As an activist during the pivotal 1990s, I helped organize rallies—including the Quddus Ali rally in 1993—that fought for our community's safety and presence. With a background in language teaching, theatre and history (Cambridge University) I lead this seminar to ensure the "lived memory" of our resistance isn't lost to gentrification.</p>
         </section>
 
-        <!-- Empty Contact section -->
-        <section id="contact" class="stops">
+        <!-- Populated Contact section -->
+        <section id="contact" class="content-section">
             <h2>Contact</h2>
+            <p>I offer this specialist field seminar only on request for university departments, school groups, and professional heritage researchers.</p>
+            <p>For inquiries regarding private bookings or academic collaboration, please reach out via email:</p>
+            <a href="mailto:hussain.m.ismail@gmail.com" class="email-link">hussain.m.ismail@gmail.com</a>
         </section>
     </div>
     
@@ -379,19 +409,16 @@
             setActiveDot(activeIndex);
         }
 
-        // Scroll listener
         window.addEventListener('scroll', () => {
             updateDotsVisibility();
             updateActiveDotOnScroll();
         });
 
-        // On load: initial state
         window.addEventListener('load', () => {
             updateDotsVisibility();
             updateActiveDotOnScroll();
         });
 
-        // Optional: clicking a dot scrolls to that stop
         dots.forEach(dot => {
             dot.addEventListener('click', () => {
                 const stopNumber = parseInt(dot.getAttribute('data-stop'), 10);
