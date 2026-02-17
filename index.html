@@ -72,7 +72,7 @@
         }
 
         .hero h1 { 
-            font-size: clamp(2.5rem, 8vw, 4.5rem); 
+            font-size: clamp(2.5rem, 8vw, 4rem); 
             font-weight: 400;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
@@ -101,21 +101,26 @@
             text-align: center;
         }
 
-        /* Minimal Stop Rows */
+        /* Minimal Stop Rows with Interaction Hints */
         .stops-list { margin-top: 3rem; }
 
         .stop-entry {
             display: block;
             text-decoration: none;
             color: inherit;
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             border-bottom: 1px solid var(--border-light);
-            transition: background 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
         }
 
         .stop-entry:last-child { border-bottom: none; }
 
-        .stop-entry:hover { background: #fcfcfc; }
+        /* Subtle interactive shift and background change */
+        .stop-entry:hover { 
+            padding-left: 1.5rem;
+            background: rgba(0, 33, 71, 0.02);
+        }
 
         .stop-header {
             display: flex;
@@ -134,20 +139,48 @@
         }
 
         .stop-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 400;
             color: var(--heritage-navy);
+            transition: color 0.3s ease;
+        }
+
+        /* Highlight title on hover */
+        .stop-entry:hover .stop-title {
+            color: var(--accent-burgundy);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 1px;
         }
 
         .stop-summary {
             font-size: 1.05rem;
             color: var(--text-muted);
-            max-width: 90%;
+            max-width: 85%;
+        }
+
+        /* Interactive "Enter" hint */
+        .view-narrative {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-burgundy);
+            margin-top: 1rem;
+            display: block;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: all 0.3s ease;
+        }
+
+        .stop-entry:hover .view-narrative {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* About & Contact Sections */
         .content-block {
-            margin-top: 4rem;
+            margin-top: 6rem;
             padding-top: 4rem;
             border-top: 1px solid var(--border-light);
         }
@@ -161,18 +194,13 @@
         .contact-area {
             text-align: center;
             background: #f9f9f9;
-            padding: 3rem 2rem;
+            padding: 4rem 2rem;
             margin-top: 1rem;
-        }
-
-        .contact-area p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
         }
 
         .email-link {
             display: inline-block;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             font-family: system-ui, -apple-system, sans-serif;
             font-weight: 600;
             color: var(--heritage-navy);
@@ -198,6 +226,8 @@
             .container { padding: 3rem 1.2rem 1.5rem; }
             nav ul { gap: 1rem; }
             .hero { height: 65vh; }
+            .stop-entry:hover { padding-left: 0.5rem; }
+            .view-narrative { opacity: 0.7; transform: none; }
         }
     </style>
 </head>
@@ -229,6 +259,7 @@
                         <span class="stop-number">Stop 01</span>
                     </div>
                     <p class="stop-summary">Lived memory and institutional power: generations born here from 1967 onwards.</p>
+                    <span class="view-narrative">View Narrative →</span>
                 </a>
 
                 <a href="stop-2-east-london-mosque.html" class="stop-entry">
@@ -237,6 +268,7 @@
                         <span class="stop-number">Stop 02</span>
                     </div>
                     <p class="stop-summary">The community anchor: a history of struggle and presence since 1941.</p>
+                    <span class="view-narrative">View Narrative →</span>
                 </a>
 
                 <a href="stop-3-fieldgate-mansions.html" class="stop-entry">
@@ -245,6 +277,7 @@
                         <span class="stop-number">Stop 03</span>
                     </div>
                     <p class="stop-summary">Housing as resistance: the legacy of the Bengali Housing Action Group squats.</p>
+                    <span class="view-narrative">View Narrative →</span>
                 </a>
 
                 <a href="stop-4-altab-ali-park.html" class="stop-entry">
@@ -253,6 +286,7 @@
                         <span class="stop-number">Stop 04</span>
                     </div>
                     <p class="stop-summary">Turning points: the 1978 mobilization against fascist violence.</p>
+                    <span class="view-narrative">View Narrative →</span>
                 </a>
 
                 <a href="stop-5-brick-lane-mosque.html" class="stop-entry">
@@ -261,6 +295,7 @@
                         <span class="stop-number">Stop 05</span>
                     </div>
                     <p class="stop-summary">The urban palimpsest: Chapel, Synagogue, and Mosque across three centuries.</p>
+                    <span class="view-narrative">View Narrative →</span>
                 </a>
 
                 <a href="stop-6-bangla-town.html" class="stop-entry">
@@ -269,6 +304,7 @@
                         <span class="stop-number">Stop 06</span>
                     </div>
                     <p class="stop-summary">Economic evolution: from the garment trade to the heart of East London's culinary culture.</p>
+                    <span class="view-narrative">View Narrative →</span>
                 </a>
 
                 <a href="stop-7-truman-brewery.html" class="stop-entry">
@@ -277,6 +313,7 @@
                         <span class="stop-number">Stop 07</span>
                     </div>
                     <p class="stop-summary">Contemporary friction: the campaign to preserve the soul of Brick Lane.</p>
+                    <span class="view-narrative">View Narrative →</span>
                 </a>
 
                 <a href="stop-8-arnold-circus.html" class="stop-entry">
@@ -285,6 +322,7 @@
                         <span class="stop-number">Stop 08</span>
                     </div>
                     <p class="stop-summary">A circular history: the world's first social housing and the cycles of urban change.</p>
+                    <span class="view-narrative">View Narrative →</span>
                 </a>
 
             </div>
@@ -292,16 +330,15 @@
 
         <section id="about" class="content-block">
             <h2>About the Historian</h2>
-            <p>I was born in Whitechapel in 1967, at the very hospital where our journey begins, Royal London Hospital (now the Town Hall). My story is tied to the streets of the East End, following in the footsteps of my father who arrived as a merchant seaman in the 1940s.</p>
-            <p>As an activist during the pivotal 1990s, I helped organize rallies—including the Quddus Ali rally in 1993—that fought for our community's safety and presence. With a background in language teaching, theatre and history (Cambridge University) I lead this seminar to ensure the "lived memory" of our resistance isn't lost to gentrification.</p>
+            <p>I was born in Whitechapel in 1967, at the Royal London Hospital—the very site where our seminar begins. My narrative is deeply rooted in the East End, following the footsteps of my father who arrived as a merchant seaman in the 1940s.</p>
+            <p>As an activist during the transformative 1990s, I helped organize pivotal community defenses, including the 1993 Quddus Ali rally. With a background in language teaching, theatre, and history from Cambridge University, I lead this seminar to ensure the lived memory of our resistance is preserved within the changing urban landscape.</p>
         </section>
 
     </main>
 
     <section id="contact" class="contact-area">
         <h2>Inquire</h2>
-        <p>I offer this specialist field seminar only on request for university departments, school groups, and professional heritage researchers.</p>
-        <p>For inquiries regarding private bookings or academic collaboration, please reach out via email:</p>
+        <p>This specialist field seminar is available upon request for university departments, secondary schools, and professional researchers.</p>
         <a href="mailto:hussain.m.ismail@gmail.com" class="email-link">hussain.m.ismail@gmail.com</a>
     </section>
 
