@@ -5,50 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stop 8 – Arnold Circus / Boundary Estate</title>
   <style>
+    /* Heritage Palette consistent with the Seminar Hub */
+    :root {
+      --heritage-navy: #002147;
+      --accent-burgundy: #800000;
+      --text-main: #1a1a1a;
+      --text-muted: #555;
+      --bg-paper: #fdfdfd;
+      --border-light: #e0e0e0;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: linear-gradient(180deg, #f8f9ff 0%, #f0f4ff 100%);
+      font-family: "Charter", "Bitstream Charter", "Sitka Text", "Cambria", serif;
+      line-height: 1.7;
+      color: var(--text-main);
+      background-color: var(--bg-paper);
       padding: 2rem 1rem;
       max-width: 800px;
       margin: 0 auto;
     }
     
+    /* Clean, Professional Back Link */
     .back-link {
       display: inline-block;
-      margin-bottom: 1.5rem;
-      color: #007bff;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      background: rgba(0,123,255,0.1);
+      margin-bottom: 2rem;
+      color: var(--heritage-navy);
       text-decoration: none;
-      transition: all 0.3s ease;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
     }
     .back-link:hover {
-      background: linear-gradient(135deg, #007bff, #0056b3);
-      color: white;
-      transform: translateY(-1px);
+      border-color: var(--accent-burgundy);
     }
     
     h1 { 
-      font-size: clamp(1.8rem, 6vw, 2.8rem); 
-      color: #007bff;
+      font-size: clamp(2rem, 6vw, 2.8rem); 
+      color: var(--heritage-navy);
       margin-bottom: 0.75rem;
-      font-weight: 800;
-    }
-    .strapline {
-      font-size: 1.1rem;
-      color: #666;
-      font-style: italic;
-      margin-bottom: 2.5rem;
-      max-width: 90%;
+      font-weight: 400;
+      line-height: 1.2;
     }
     
+    .strapline {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 3rem;
+      border-left: 3px solid var(--accent-burgundy);
+      padding-left: 1.5rem;
+    }
+    
+    /* Elegant Photo Gallery */
     .stop-gallery {
-      margin: 0 -1rem 2rem;
+      margin: 0 -1rem 3rem;
       padding: 0 1rem;
       overflow-x: auto;
       overflow-y: hidden;
@@ -60,87 +76,106 @@
     .stop-gallery::-webkit-scrollbar { display: none; }
     .stop-gallery-track {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       padding: 1rem 0;
     }
     .stop-photo {
-      flex: 0 0 200px;
-      height: 140px;
-      border-radius: 16px;
+      flex: 0 0 280px;
+      height: 200px;
+      border-radius: 4px;
       background-size: cover;
       background-position: center;
       scroll-snap-align: center;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      position: relative;
+      filter: grayscale(10%) contrast(1.1);
+      border: 1px solid var(--border-light);
+      transition: filter 0.4s ease;
     }
     .stop-photo:hover {
-      transform: scale(1.05) translateY(-4px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      filter: grayscale(0%);
     }
     
     h2 { 
-      color: #007bff;
-      font-size: 1.5rem;
-      margin: 2.5rem 0 1.25rem;
-      position: relative;
+      color: var(--heritage-navy);
+      font-size: 1.6rem;
+      margin: 3rem 0 1.5rem;
+      font-weight: 400;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.5rem;
     }
-    h2::after {
-      content: '➜';
-      display: inline-block;
-      margin-left: 0.5rem;
-      color: #ff4444;
-    }
+
     p, li {
-      margin-bottom: 1rem;
-      font-size: 1.05rem;
-    }
-    ul {
-      padding-left: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    li {
-      margin-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
     }
     
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    li {
+      margin-bottom: 1rem;
+    }
+
+    /* "Independent Inquiry" Section - The Take-Away */
+    .inquiry-box {
+      background: #f9f9f9;
+      padding: 2rem;
+      border-radius: 4px;
+      margin: 4rem 0;
+      border-left: 1px solid var(--border-light);
+    }
+    .inquiry-box h3 {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent-burgundy);
+      margin-bottom: 1rem;
+    }
+    .inquiry-box p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+    .inquiry-box strong {
+      color: var(--heritage-navy);
+    }
+
+    /* Minimalist Navigation Footer */
     .footer-nav {
       display: flex;
       justify-content: space-between;
-      gap: 1rem;
-      margin-top: 3rem;
+      gap: 2rem;
+      margin-top: 5rem;
       padding-top: 2rem;
-      border-top: 2px solid rgba(0,123,255,0.2);
+      border-top: 1px solid var(--border-light);
     }
     .footer-nav a {
-      color: white;
-      background: linear-gradient(135deg, #007bff, #0056b3);
-      padding: 0.75rem 1.5rem;
-      border-radius: 25px;
-      font-weight: 600;
+      color: var(--heritage-navy);
       text-decoration: none;
-      transition: all 0.3s ease;
-      flex: 1;
-      text-align: center;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.3s ease;
     }
     .footer-nav a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+      color: var(--accent-burgundy);
     }
     
     @media (min-width: 768px) {
-      body { padding: 3rem 2rem; }
-      .stop-photo { flex: 0 0 280px; height: 180px; }
-    }
-    @media (max-width: 480px) {
-      .stop-photo { flex: 0 0 160px; height: 110px; }
+      body { padding: 4rem 2rem; }
+      .stop-photo { flex: 0 0 350px; height: 240px; }
     }
   </style>
 </head>
 <body>
-  <a href="index.html" class="back-link">← Back to Home</a>
+  <a href="index.html" class="back-link">← Return to Hub</a>
 
   <h1>Stop 8 – Arnold Circus</h1>
-  <p class="strapline">Utopia in brick: 130 years of social housing and the birth of a new East End.</p>
+  <p class="strapline">A circular history: the world's first social housing and the legacy of urban utopianism.</p>
 
   <div class="stop-gallery">
     <div class="stop-gallery-track">
@@ -153,28 +188,34 @@
 
   <h2>What this stop covers</h2>
   <p>
-    Our tour ends at <strong>Arnold Circus</strong>, the center of the Boundary Estate. This was the world's first large-scale social housing project, built by the London County Council (LCC) to replace the "Old Nichol," one of Victorian London's most notorious and dangerous slums.
+    Our seminar concludes at <strong>Arnold Circus</strong>, the center of the Boundary Estate. Opened in 1900, this was the world’s first large-scale social housing project, built to replace the "Old Nichol"—Victorian London’s most notorious slum.
   </p>
   <p>
-    Standing on the central mound—which is built from the literal rubble of the slums that were cleared away—we reflect on how housing policy has shaped the lives of migrant families. From the Victorian era to the 1970s housing actions, the story of the East End has always been a story of people fighting for a decent place to live.
+    Standalone on the central mound—constructed from the debris of the cleared slums—we reflect on the 130-year cycle of East End housing. We examine how utopian architectural visions often sit in tension with the actual needs of the migrant families who inhabit them, from Jewish tailors to Bangladeshi residents.
   </p>
 
   <h2>Key facts</h2>
   <ul>
-    <li>The Boundary Estate was opened in 1900 by the Prince of Wales. It replaced a slum where the infant mortality rate was twice that of the rest of London.</li>
-    <li>The design was revolutionary: wide streets, a laundry, a clubhouse, and apartments that allowed for light and air—luxuries the poor had never known.</li>
-    <li>Today, the estate remains a mix of social housing (housing many Bangladeshi families) and high-priced private apartments, showing how the history of social welfare and modern gentrification sit side-by-side.</li>
+    <li>The Boundary Estate replaced a district where infant mortality was once double the London average, signaling the birth of state-led public health.</li>
+    <li>The central bandstand and garden are literal "mountains of history," built from the soil and rubble of the demolished Victorian tenements.</li>
+    <li>Today, the estate represents a complex mix of protected social housing and multi-million pound private apartments, serving as a live case study in the permanence of class and the flux of community.</li>
   </ul>
 
-  <h2>Questions to bring with you</h2>
+  <h2>Questions for reflection</h2>
   <ul>
-    <li>When we "clear a slum" to build something better, who is left behind? Did the people of the Old Nichol actually get to live in these new, beautiful buildings?</li>
-    <li>Looking back at our whole walk—from the hospital where I was born to this bandstand—what is the common thread that makes someone a "Londoner"?</li>
+    <li>When a "slum" is cleared to make way for "progress," who is truly the beneficiary? Did the original residents of the Old Nichol find home in these new brick palaces?</li>
+    <li>Looking back at our trajectory from the Royal London Hospital to this bandstand, what is the defining thread of the "Londoner"? Is it residence, or is it the act of remaining through resistance?</li>
   </ul>
+
+  <!-- The "Take Away" element -->
+  <div class="inquiry-box">
+    <h3>Independent Inquiry</h3>
+    <p>Research the <strong>London County Council (LCC)</strong> planning archives at the <strong>London Metropolitan Archives</strong> regarding the 1890 <strong>Housing of the Working Classes Act</strong> and the architectural designs of <strong>Owen Fleming</strong>.</p>
+  </div>
 
   <div class="footer-nav">
     <a href="stop-7-truman-brewery.html">← Previous stop</a>
-    <a href="index.html">Finish Tour →</a>
+    <a href="index.html">Finish Seminar →</a>
   </div>
 </body>
 </html>
