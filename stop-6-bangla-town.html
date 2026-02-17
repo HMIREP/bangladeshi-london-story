@@ -5,50 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stop 6 – Bangla Town</title>
   <style>
+    /* Heritage Palette consistent with the Seminar Hub */
+    :root {
+      --heritage-navy: #002147;
+      --accent-burgundy: #800000;
+      --text-main: #1a1a1a;
+      --text-muted: #555;
+      --bg-paper: #fdfdfd;
+      --border-light: #e0e0e0;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background: linear-gradient(180deg, #f8f9ff 0%, #f0f4ff 100%);
+      font-family: "Charter", "Bitstream Charter", "Sitka Text", "Cambria", serif;
+      line-height: 1.7;
+      color: var(--text-main);
+      background-color: var(--bg-paper);
       padding: 2rem 1rem;
       max-width: 800px;
       margin: 0 auto;
     }
     
+    /* Clean, Professional Back Link */
     .back-link {
       display: inline-block;
-      margin-bottom: 1.5rem;
-      color: #007bff;
-      font-weight: 600;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      background: rgba(0,123,255,0.1);
+      margin-bottom: 2rem;
+      color: var(--heritage-navy);
       text-decoration: none;
-      transition: all 0.3s ease;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
     }
     .back-link:hover {
-      background: linear-gradient(135deg, #007bff, #0056b3);
-      color: white;
-      transform: translateY(-1px);
+      border-color: var(--accent-burgundy);
     }
     
     h1 { 
-      font-size: clamp(1.8rem, 6vw, 2.8rem); 
-      color: #007bff;
+      font-size: clamp(2rem, 6vw, 2.8rem); 
+      color: var(--heritage-navy);
       margin-bottom: 0.75rem;
-      font-weight: 800;
-    }
-    .strapline {
-      font-size: 1.1rem;
-      color: #666;
-      font-style: italic;
-      margin-bottom: 2.5rem;
-      max-width: 90%;
+      font-weight: 400;
+      line-height: 1.2;
     }
     
+    .strapline {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: 3rem;
+      border-left: 3px solid var(--accent-burgundy);
+      padding-left: 1.5rem;
+    }
+    
+    /* Elegant Photo Gallery */
     .stop-gallery {
-      margin: 0 -1rem 2rem;
+      margin: 0 -1rem 3rem;
       padding: 0 1rem;
       overflow-x: auto;
       overflow-y: hidden;
@@ -60,87 +76,106 @@
     .stop-gallery::-webkit-scrollbar { display: none; }
     .stop-gallery-track {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       padding: 1rem 0;
     }
     .stop-photo {
-      flex: 0 0 200px;
-      height: 140px;
-      border-radius: 16px;
+      flex: 0 0 280px;
+      height: 200px;
+      border-radius: 4px;
       background-size: cover;
       background-position: center;
       scroll-snap-align: center;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      position: relative;
+      filter: grayscale(10%) contrast(1.1);
+      border: 1px solid var(--border-light);
+      transition: filter 0.4s ease;
     }
     .stop-photo:hover {
-      transform: scale(1.05) translateY(-4px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      filter: grayscale(0%);
     }
     
     h2 { 
-      color: #007bff;
-      font-size: 1.5rem;
-      margin: 2.5rem 0 1.25rem;
-      position: relative;
+      color: var(--heritage-navy);
+      font-size: 1.6rem;
+      margin: 3rem 0 1.5rem;
+      font-weight: 400;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.5rem;
     }
-    h2::after {
-      content: '➜';
-      display: inline-block;
-      margin-left: 0.5rem;
-      color: #ff4444;
-    }
+
     p, li {
-      margin-bottom: 1rem;
-      font-size: 1.05rem;
-    }
-    ul {
-      padding-left: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    li {
-      margin-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
     }
     
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    li {
+      margin-bottom: 1rem;
+    }
+
+    /* "Independent Inquiry" Section - The Take-Away */
+    .inquiry-box {
+      background: #f9f9f9;
+      padding: 2rem;
+      border-radius: 4px;
+      margin: 4rem 0;
+      border-left: 1px solid var(--border-light);
+    }
+    .inquiry-box h3 {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent-burgundy);
+      margin-bottom: 1rem;
+    }
+    .inquiry-box p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+    .inquiry-box strong {
+      color: var(--heritage-navy);
+    }
+
+    /* Minimalist Navigation Footer */
     .footer-nav {
       display: flex;
       justify-content: space-between;
-      gap: 1rem;
-      margin-top: 3rem;
+      gap: 2rem;
+      margin-top: 5rem;
       padding-top: 2rem;
-      border-top: 2px solid rgba(0,123,255,0.2);
+      border-top: 1px solid var(--border-light);
     }
     .footer-nav a {
-      color: white;
-      background: linear-gradient(135deg, #007bff, #0056b3);
-      padding: 0.75rem 1.5rem;
-      border-radius: 25px;
-      font-weight: 600;
+      color: var(--heritage-navy);
       text-decoration: none;
-      transition: all 0.3s ease;
-      flex: 1;
-      text-align: center;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: color 0.3s ease;
     }
     .footer-nav a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0,123,255,0.4);
+      color: var(--accent-burgundy);
     }
     
     @media (min-width: 768px) {
-      body { padding: 3rem 2rem; }
-      .stop-photo { flex: 0 0 280px; height: 180px; }
-    }
-    @media (max-width: 480px) {
-      .stop-photo { flex: 0 0 160px; height: 110px; }
+      body { padding: 4rem 2rem; }
+      .stop-photo { flex: 0 0 350px; height: 240px; }
     }
   </style>
 </head>
 <body>
-  <a href="index.html" class="back-link">← Back to Home</a>
+  <a href="index.html" class="back-link">← Return to Hub</a>
 
   <h1>Stop 6 – Bangla Town</h1>
-  <p class="strapline">Rise and fall: the story of the Curry Mile and the shifting economic heart.</p>
+  <p class="strapline">Economic evolution: from the hidden labor of the garment trade to the visible branding of the "Curry Mile."</p>
 
   <div class="stop-gallery">
     <div class="stop-gallery-track">
@@ -153,24 +188,30 @@
 
   <h2>What this stop covers</h2>
   <p>
-    This section of Brick Lane was officially designated "Banglatown" in the late 1990s as part of a branding exercise to promote the area as a cultural and culinary destination. 
+    In the late 1990s, this section of Brick Lane was officially designated as "Banglatown." This stop analyzes the shift from the <strong>"hidden economy"</strong> of garment sweatshops—where many first-generation migrants worked in subdivided houses—to the highly visible <strong>"service economy"</strong> of the restaurant trade.
   </p>
   <p>
-    We discuss the transition from the hidden economy of **garment sweatshops** (where many first-generation Bangladeshis worked behind closed doors) to the highly visible **service economy** of the "Curry Mile." We also look at the decline: how a strip that once boasted around 60 restaurants now has fewer than half that number remaining.
+    We examine how the branding of an ethnic enclave as a tourist destination impacts the local community. While it provided economic visibility, it also coincided with the rise of gentrification, which has seen the number of traditional curry houses drop from over 60 to approximately 23 in recent years.
   </p>
 
   <h2>Key facts</h2>
   <ul>
-    <li>The street furniture—including the red and green lamp posts—was designed by Bengali artists to mirror the colors of the Bangladesh flag.</li>
-    <li>In the 1980s and 90s, the "curry house" became the primary symbol of Bangladeshi economic success in the UK, but it also became a target for racist "Paki-bashing" during the height of National Front activity.</li>
-    <li>Today, the high cost of rent and the changing tastes of a gentrified London are forcing many traditional family-run restaurants to close.</li>
+    <li>The street's aesthetic markers—including the red and green lamp posts—were specifically designed to mirror the national flag of Bangladesh.</li>
+    <li>During the 1980s and 90s, the "curry house" was both a symbol of economic mobility and a primary target for racist provocations by far-right groups.</li>
+    <li>The economic transition of the 2010s saw the area's specialized garment workshops replaced by tech offices and high-end retail, fundamentally altering the local labor market.</li>
   </ul>
 
-  <h2>Questions to bring with you</h2>
+  <h2>Questions for reflection</h2>
   <ul>
-    <li>Does turning a neighborhood into a "branded" tourist destination (like Banglatown) help preserve its culture, or does it turn it into a museum?</li>
-    <li>When a traditional industry like the curry trade begins to fade, what happens to the families who have relied on it for generations?</li>
+    <li>Does the formal "branding" of a neighborhood like Banglatown protect its heritage or merely package it for outside consumption?</li>
+    <li>When a traditional family-run economy (like the restaurant trade) declines, what institutional or social structures are left to support the resident community?</li>
   </ul>
+
+  <!-- The "Take Away" element -->
+  <div class="inquiry-box">
+    <h3>Independent Inquiry</h3>
+    <p>Research the <strong>1991 Spitalfields City Challenge</strong> reports or the socio-economic analysis by <strong>Tower Hamlets Council</strong> regarding the decline of the Brick Lane restaurant trade in the 2010s.</p>
+  </div>
 
   <div class="footer-nav">
     <a href="stop-5-brick-lane-mosque.html">← Previous stop</a>
