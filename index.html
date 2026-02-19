@@ -26,6 +26,7 @@
             --text-muted: #555;
             --bg-paper: #fdfdfd;
             --border-light: #e0e0e0;
+            --archival-grey: #f2f2f2;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -223,6 +224,69 @@
             font-size: 1.2rem;
         }
 
+        /* Archival Gallery Styling */
+        .archive-gallery {
+            margin: 2rem -1.5rem 3rem;
+            padding: 0 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .archive-gallery::-webkit-scrollbar { display: none; }
+        
+        .archive-gallery-track {
+            display: flex;
+            gap: 1.25rem;
+            padding: 0.5rem 0;
+        }
+
+        .archive-photo {
+            flex: 0 0 240px;
+            height: 180px;
+            background-color: var(--archival-grey);
+            background-size: cover;
+            background-position: center;
+            scroll-snap-align: center;
+            border: 1px solid var(--border-light);
+            filter: grayscale(100%);
+            transition: filter 0.4s ease, transform 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .archive-photo:hover {
+            filter: grayscale(0%);
+            transform: translateY(-2px);
+        }
+
+        .placeholder-text {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #aaa;
+            font-weight: 600;
+        }
+
+        .archive-caption {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            width: 100%;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+        }
+
         .contact-area {
             text-align: center;
             background: #f9f9f9;
@@ -262,6 +326,7 @@
             .stop-entry:hover { padding-left: 0.5rem; }
             .view-narrative { opacity: 0.7; transform: none; }
             .companion-note { max-width: 100%; font-size: 0.9rem; }
+            .archive-photo { flex: 0 0 200px; height: 150px; }
         }
     </style>
 </head>
@@ -370,8 +435,48 @@
             <h2>About the Historian</h2>
             <p class="historian-name">Hussain Mohamed Ismail</p>
             <p>I was born in Whitechapel in 1967, at the Royal London Hospital—the very site where our seminar begins. My narrative is deeply rooted in the East End, following the footsteps of my father who arrived as a merchant seaman in the 1940s.</p>
+
+            <!-- Archival Gallery Placement: Between first and second bio paragraph -->
+            <div class="archive-gallery">
+                <div class="archive-gallery-track">
+                    <div class="archive-photo">
+                        <span class="placeholder-text">Being Prepared</span>
+                        <span class="archive-caption">Hussain 01: Archival Record</span>
+                    </div>
+                    <div class="archive-photo" style="background-image: url('assets/hussain2.jpg');">
+                        <span class="archive-caption">Hussain 02</span>
+                    </div>
+                    <div class="archive-photo" style="background-image: url('assets/hussain3.jpg');">
+                        <span class="archive-caption">Hussain 03</span>
+                    </div>
+                    <div class="archive-photo" style="background-image: url('assets/hussain4.jpg');">
+                        <span class="archive-caption">Hussain 04</span>
+                    </div>
+                    <div class="archive-photo" style="background-image: url('assets/hussain5.jpg');">
+                        <span class="archive-caption">Hussain 05</span>
+                    </div>
+                    <div class="archive-photo" style="background-image: url('assets/hussain6.jpg');">
+                        <span class="archive-caption">Hussain 06</span>
+                    </div>
+                    <div class="archive-photo" style="background-image: url('assets/hussain7.jpg');">
+                        <span class="archive-caption">Hussain 07</span>
+                    </div>
+                    <div class="archive-photo" style="background-image: url('assets/hussain8.jpg');">
+                        <span class="archive-caption">Hussain 08</span>
+                    </div>
+                    <div class="archive-photo">
+                        <span class="placeholder-text">Being Prepared</span>
+                        <span class="archive-caption">Hussain 09: Archival Record</span>
+                    </div>
+                    <div class="archive-photo">
+                        <span class="placeholder-text">Being Prepared</span>
+                        <span class="archive-caption">Hussain 10: Archival Record</span>
+                    </div>
+                </div>
+            </div>
+
             <p>As an activist during the transformative 1990s, I helped organise pivotal community defences, including the 1993 Quddus Ali rally. With a background in language teaching, theatre, and history from Cambridge University, I lead this seminar to ensure the lived memory of our resistance is preserved within the changing urban landscape.</p>
-            <p>I provide these sessions as a platform for critical engagement with London's social history, blending academic rigour with first-hand community insights.</p>
+            <p>I provide these sessions as a platform for critical engagement with London's social history, blending academic rigour with firsthand community insights.</p>
         </section>
 
     </main>
