@@ -286,11 +286,25 @@
             text-align: center;
         }
 
+        /* Contact Area Styling */
         .contact-area {
             text-align: center;
             background: #f9f9f9;
-            padding: 4rem 2rem;
+            padding: 4rem 1.5rem;
             margin-top: 1rem;
+        }
+
+        /* Constrain the bandwidth of the contact area content */
+        .contact-area h2, 
+        .contact-area p {
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-area p {
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
         }
 
         .email-link {
@@ -307,21 +321,30 @@
 
         .email-link:hover { opacity: 0.7; }
 
+        /* Footer Styling */
         footer {
-            padding: 4rem 1rem;
+            padding: 4rem 1.5rem;
             text-align: center;
+            border-top: 1px solid var(--border-light);
+            color: #999;
+        }
+
+        /* Constrain footer text to the main column bandwidth */
+        footer p {
+            max-width: 720px;
+            margin: 0 auto;
             font-family: system-ui, -apple-system, sans-serif;
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: #999;
-            border-top: 1px solid var(--border-light);
+            line-height: 1.6;
         }
 
         .credit-note {
             text-transform: none;
             font-size: 0.7rem;
             opacity: 0.7;
+            display: inline-block; /* Helps with alignment in the constrained column */
         }
 
         @media (max-width: 600px) {
@@ -491,7 +514,7 @@
     <footer>
         <p>
             &copy; 2026 British-Bangladeshi London Story &middot; Hussain Mohamed Ismail 
-            &middot; <span class="credit-note">The photo credits are currently being processed.</span>
+            <br><span class="credit-note">The photo credits are currently being processed.</span>
         </p>
     </footer>
 
