@@ -82,6 +82,7 @@
             text-align: center;
             color: white;
             padding-top: 60px;
+            position: relative; /* Necessary for absolute positioning of credit */
         }
 
         .hero h1 { 
@@ -97,6 +98,18 @@
             text-transform: uppercase;
             letter-spacing: 0.2em;
             opacity: 0.9;
+        }
+
+        /* Discrete Hero Photo Credit */
+        .hero-credit {
+            position: absolute;
+            bottom: 12px;
+            right: 15px;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.05em;
+            pointer-events: none; /* Prevents interference with clicks */
         }
 
         .container { 
@@ -355,6 +368,7 @@
             .view-narrative { opacity: 0.7; transform: none; }
             .companion-note { max-width: 100%; font-size: 0.9rem; }
             .archive-photo { flex: 0 0 200px; height: 150px; }
+            .hero-credit { bottom: 8px; right: 10px; font-size: 0.55rem; }
         }
     </style>
 </head>
@@ -372,6 +386,7 @@
     <header id="home" class="hero">
         <h1>Here to Stay</h1>
         <p>A British-Bangladeshi London Story</p>
+        <span class="hero-credit">Photo by Mayar Akash, Quddus Ali protest rally at Royal London Hospital, Whitechapel, 10 Sept 1993</span>
     </header>
 
     <main class="container">
