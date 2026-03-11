@@ -299,7 +299,7 @@
             text-align: center;
         }
 
-        /* Metadata Section Styling */
+        /* Refined Metadata Section Styling */
         .metadata-section {
             margin-top: 4rem;
             padding-top: 1.5rem;
@@ -318,21 +318,24 @@
         .metadata-list {
             list-style: none;
             font-family: system-ui, -apple-system, sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.72rem; /* Reduced for density */
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.4; /* Tightened line height */
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns on desktop */
+            column-gap: 3rem;
         }
 
         .metadata-list li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            gap: 1rem;
+            margin-bottom: 0.4rem; /* Tightened spacing */
+            display: block; /* Dictionary-style inline flow */
         }
 
         .metadata-list span {
             font-weight: bold;
             color: var(--heritage-navy);
-            flex: 0 0 75px;
+            margin-right: 0.4rem;
+            display: inline;
         }
 
         /* Contact Area Styling */
@@ -396,7 +399,13 @@
             .companion-note { max-width: 100%; font-size: 0.9rem; }
             .archive-photo { flex: 0 0 200px; height: 150px; }
             .hero-credit { bottom: 8px; right: 10px; font-size: 0.55rem; }
-            .metadata-list li { flex-direction: column; gap: 0.1rem; margin-bottom: 0.75rem; }
+            
+            /* Mobile Metadata Adjustments */
+            .metadata-list { 
+                grid-template-columns: 1fr; /* Back to single column */
+                font-size: 0.75rem; 
+            }
+            .metadata-list li { margin-bottom: 0.6rem; }
         }
     </style>
 </head>
