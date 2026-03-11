@@ -82,7 +82,7 @@
             text-align: center;
             color: white;
             padding-top: 60px;
-            position: relative; /* Necessary for absolute positioning of credit */
+            position: relative;
         }
 
         .hero h1 { 
@@ -109,7 +109,7 @@
             font-size: 0.6rem;
             color: rgba(255, 255, 255, 0.4);
             letter-spacing: 0.05em;
-            pointer-events: none; /* Prevents interference with clicks */
+            pointer-events: none;
         }
 
         .container { 
@@ -299,6 +299,42 @@
             text-align: center;
         }
 
+        /* Metadata Section Styling */
+        .metadata-section {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .metadata-section h3 {
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--heritage-navy);
+            margin-bottom: 1.25rem;
+        }
+
+        .metadata-list {
+            list-style: none;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .metadata-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .metadata-list span {
+            font-weight: bold;
+            color: var(--heritage-navy);
+            flex: 0 0 75px;
+        }
+
         /* Contact Area Styling */
         .contact-area {
             text-align: center;
@@ -307,7 +343,6 @@
             margin-top: 1rem;
         }
 
-        /* Constrain the bandwidth of the contact area content */
         .contact-area h2, 
         .contact-area p {
             max-width: 720px;
@@ -342,7 +377,6 @@
             color: #999;
         }
 
-        /* Constrain footer text to the main column bandwidth */
         footer p {
             max-width: 720px;
             margin: 0 auto;
@@ -351,13 +385,6 @@
             text-transform: uppercase;
             letter-spacing: 0.1em;
             line-height: 1.6;
-        }
-
-        .credit-note {
-            text-transform: none;
-            font-size: 0.7rem;
-            opacity: 0.7;
-            display: inline-block;
         }
 
         @media (max-width: 600px) {
@@ -369,6 +396,7 @@
             .companion-note { max-width: 100%; font-size: 0.9rem; }
             .archive-photo { flex: 0 0 200px; height: 150px; }
             .hero-credit { bottom: 8px; right: 10px; font-size: 0.55rem; }
+            .metadata-list li { flex-direction: column; gap: 0.1rem; margin-bottom: 0.75rem; }
         }
     </style>
 </head>
@@ -448,7 +476,7 @@
                         <span class="stop-title">Bangla Town</span>
                         <span class="stop-number">Stop 06</span>
                     </div>
-                    <p class="stop-summary">Economic evolution: from the garment trade to the heart of East London's culinary culture.</p>
+                    <p class="stop-summary">Economic evolution: from the hidden labour of the garment trade to the visible branding of the "Curry Mile."</p>
                     <span class="view-narrative">View Narrative →</span>
                 </a>
 
@@ -482,7 +510,7 @@
                 <div class="archive-gallery-track">
                     <div class="archive-photo">
                         <span class="placeholder-text">Being Prepared</span>
-                        <span class="archive-caption">Hussain 01: Archival Record</span>
+                        <span class="archive-caption">Hussain 01</span>
                     </div>
                     <div class="archive-photo" style="background-image: url('assets/hussain2.jpg');">
                         <span class="archive-caption">Hussain 02</span>
@@ -516,6 +544,23 @@
 
             <p>As an activist during the transformative 1990s, I helped organise pivotal community defences, including the 1993 Quddus Ali rally. With a background in language teaching, theatre, and history from Cambridge University, I lead this seminar to ensure the lived memory of our resistance is preserved within the changing urban landscape.</p>
             <p>I provide these sessions as a platform for critical engagement with London's social history, blending academic rigour with first-hand community insights.</p>
+
+            <!-- Archival Metadata Section -->
+            <div class="metadata-section">
+                <h3>Archival Image Metadata</h3>
+                <ul class="metadata-list">
+                    <li><span>Hussain 01</span> Archival record being prepared.</li>
+                    <li><span>Hussain 02</span> Context to follow.</li>
+                    <li><span>Hussain 03</span> Context to follow.</li>
+                    <li><span>Hussain 04</span> Photo by Lloyd Gee, Bethnal Green Town Hall, 1986.</li>
+                    <li><span>Hussain 05</span> Photo by Phil Maxwell, Brick Lane graffiti, 1993.</li>
+                    <li><span>Hussain 06</span> Photo by Paul Trevor, Altab Ali Park, 1994.</li>
+                    <li><span>Hussain 07</span> Photo by Phil Maxwell, Bethnal Green, 1993.</li>
+                    <li><span>Hussain 08</span> Photo by Phil Maxwell, Bethnal Green, 1993.</li>
+                    <li><span>Hussain 09</span> Photo by Phil Maxwell, Brick Lane, 1993.</li>
+                    <li><span>Hussain 10</span> Photo by Mayar Akash, Royal London Hospital, Quddus Ali protest, 10 Sep 1993.</li>
+                </ul>
+            </div>
         </section>
 
     </main>
@@ -528,8 +573,7 @@
 
     <footer>
         <p>
-            &copy; 2026 British-Bangladeshi London Story &middot; Hussain Mohamed Ismail 
-            <br><span class="credit-note">The photo credits are currently being processed.</span>
+            &copy; 2026 British-Bangladeshi London Story &middot; Hussain Mohamed Ismail
         </p>
     </footer>
 
